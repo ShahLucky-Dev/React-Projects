@@ -15,6 +15,14 @@ function App() {
     setTask("");
   }
 
+  function deleteButton(index) {
+    const newItem = tasks.filter((task, i) => {
+      return i !== index;
+    });
+
+    setTasks(newItem);
+  }
+
   return (
     <div>
       <h1>Todo App</h1>
@@ -31,7 +39,18 @@ function App() {
       <hr />
 
       {tasks.map((item, index) => {
-        return <h3 key={index}>{item}</h3>;
+        return (
+          <div key={index}>
+            <h3 key={index}>{item}</h3>
+            <button
+              onClick={() => {
+                deleteButton(index);
+              }}
+            >
+              Delete
+            </button>
+          </div>
+        );
       })}
     </div>
   );
