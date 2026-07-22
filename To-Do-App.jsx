@@ -1,6 +1,8 @@
 import { useState } from "react";
 
-function App() {
+import "./To-Do.css";
+
+function ToDoApp() {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
 
@@ -24,25 +26,27 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="container">
       <h1>Todo App</h1>
 
       <input
+        className="input"
         type="text"
         value={task}
         onChange={handleChange}
         placeholder="Enter Task"
       />
 
-      <button onClick={addTask}>Add Task</button>
-
-      <hr />
+      <button className="btn" onClick={addTask}>
+        Add Task
+      </button>
 
       {tasks.map((item, index) => {
         return (
-          <div key={index}>
-            <h3 key={index}>{item}</h3>
+          <div className="taskRow" key={index}>
+            <h3>{item}</h3>
             <button
+              className="dlt"
               onClick={() => {
                 deleteButton(index);
               }}
@@ -56,4 +60,4 @@ function App() {
   );
 }
 
-export default App;
+export default ToDoApp;
