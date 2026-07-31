@@ -5,6 +5,7 @@ import "./To-Do.css";
 function ToDoApp() {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
+  const [like, setLike] = useState(false);
 
   function handleChange(event) {
     setTask(event.target.value);
@@ -45,6 +46,7 @@ function ToDoApp() {
         return (
           <div className="taskRow" key={index}>
             <h3>{item}</h3>
+
             <button
               className="dlt"
               onClick={() => {
