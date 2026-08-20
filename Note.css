@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#block {
+  height: fit-content;
+  width: fit-content;
+
+  border: 2px solid black;
+  border-radius: 12px;
+}
+
+#notes {
+  height: fit-content;
+  width: fit-content;
+  display: inline-table;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 12px;
+}
+
+#allnotes {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
