@@ -1,28 +1,104 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  padding: 40px;
+}
+
+/* Main note form */
 #block {
-  height: fit-content;
-  width: fit-content;
-
-  border: 2px solid black;
-  border-radius: 12px;
+  width: 420px;
+  margin: auto;
+  padding: 25px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-#notes {
-  height: fit-content;
-  width: fit-content;
-  display: inline-table;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid black;
-  border-radius: 12px;
+#block h1 {
+  margin-bottom: 20px;
+  text-align: center;
 }
 
+#block input,
+#block textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+}
+
+#block textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+#block input:focus,
+#block textarea:focus {
+  border-color: #555;
+}
+
+#block button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  background: black;
+  color: white;
+}
+
+/* Notes section */
 #allnotes {
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Individual note */
+#notes {
+  width: 260px;
+  min-height: 170px;
+  padding: 20px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+#notes h1 {
+  font-size: 21px;
+  margin-bottom: 12px;
+}
+
+#notes p {
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+#notes button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  background: #222;
+  color: white;
+}
+
+#notes button:hover,
+#block button:hover {
+  opacity: 0.8;
 }
