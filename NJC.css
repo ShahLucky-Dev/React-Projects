@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family:
+    "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.head {
+  background-color: rgb(248, 214, 42);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+button {
+  border: transparent;
+  border-radius: 0;
+}
+
+.malabtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mala {
+  background-color: rgb(248, 175, 39);
+  border: 1x solid rgb(244, 174, 45);
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+}
+
+.resetbtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reset {
+  background-color: rgb(248, 175, 39);
+  border: 1x solid rgb(244, 174, 45);
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
