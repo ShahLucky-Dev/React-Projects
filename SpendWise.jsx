@@ -5,10 +5,19 @@ function App() {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("");
+  const [transactions, setTransactions] = useState([]);
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log({ title, amount, type });
+    const transaction = {
+      id: Date.now(),
+      title: title,
+      amount: amount,
+      type: type,
+    };
+
+    setTransactions([...transactions, transaction]);
+    console.log(transaction);
   }
   return (
     <div className="container">
@@ -69,7 +78,12 @@ function App() {
         <button type="submit">+ Add Transaction</button>
       </form>
       <div className="detail">
-        <h2>Recent Transaction</h2>
+        {transactions.length === 0 ? (
+          <h2>Recent Transaction</h2>
+        ) : (
+          { transaction }
+        )}
+
         <br />
         <h2>No transaction yet</h2>
       </div>
