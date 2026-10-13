@@ -17,7 +17,9 @@ function App() {
     };
 
     setTransactions([...transactions, transaction]);
-    console.log(transaction);
+    setTitle("");
+    setAmount("");
+    setType("");
   }
   return (
     <div className="container">
@@ -79,13 +81,19 @@ function App() {
       </form>
       <div className="detail">
         {transactions.length === 0 ? (
-          <h2>Recent Transaction</h2>
+          <h2>No transaction yet</h2>
         ) : (
-          { transaction }
+          transactions.map((item) => {
+            return (
+              <div key={item.id}>
+                <h3>{item.title}</h3>
+                <h3>Number{item.amount}</h3>
+                <h3>{item.type}</h3>
+              </div>
+            );
+          })
         )}
-
         <br />
-        <h2>No transaction yet</h2>
       </div>
     </div>
   );
