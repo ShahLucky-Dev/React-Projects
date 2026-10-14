@@ -21,6 +21,24 @@ function App() {
     setAmount("");
     setType("");
   }
+
+  const incomeTransactions = transactions.filter((item) => {
+    return item.type === "income";
+  });
+
+  const totalIncome = incomeTransactions.reduce((sum, number) => {
+    return sum + Number(number.amount);
+  }, 0);
+
+  const expenseTransactions = transactions.filter((item) => {
+    return item.type === "expense";
+  });
+
+  const totalExpense = expenseTransactions.reduce((sum, number) => {
+    return sum + Number(number.amount);
+  }, 0);
+
+  const totalBalance = totalIncome - totalExpense;
   return (
     <div className="container">
       <div className="header">
@@ -31,19 +49,19 @@ function App() {
         <div className="card">
           <h3>
             Total Balance <br />
-            0₹
+            {totalBalance}
           </h3>
         </div>
         <div className="card">
           <h3>
-            Income <br />
-            0₹
+            Total Income <br />
+            {totalIncome} ₹
           </h3>
         </div>
         <div className="card">
           <h3>
-            Expenses <br />
-            0₹
+            Total Expenses <br />
+            {totalExpense}₹
           </h3>
         </div>
       </div>
