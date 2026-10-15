@@ -22,6 +22,13 @@ function App() {
     setType("");
   }
 
+  function handleDelete(id) {
+    const updatedTransactions = transactions.filter((item) => {
+      return id !== item.id;
+    });
+    setTransactions(updatedTransactions);
+  }
+
   const incomeTransactions = transactions.filter((item) => {
     return item.type === "income";
   });
@@ -105,8 +112,10 @@ function App() {
             return (
               <div key={item.id}>
                 <h3>{item.title}</h3>
-                <h3>Number{item.amount}</h3>
+                <h3>{item.amount}₹</h3>
                 <h3>{item.type}</h3>
+
+                <button onClick={() => handleDelete(item.id)}>Delete</button>
               </div>
             );
           })

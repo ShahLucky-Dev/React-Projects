@@ -1,40 +1,268 @@
+/* ===== Global Styles ===== */
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #0b1120;
+  color: #f1f5f9;
+  min-height: 100vh;
+}
+
+button,
+input,
+select {
+  font: inherit;
 }
 
 .container {
-  .container {
-    min-height: fit-content;
-    width: 80%;
-    border: 1.5px solid black;
-    margin: 0 auto;
-  }
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  padding: 35px 0 50px;
 }
 
+/* ===== Header ===== */
 .header {
   display: flex;
-  justify-content: space-evenly;
-  border: 1px solid black;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 35px;
 }
 
+.header h1:first-child {
+  font-size: 30px;
+  color: #38bdf8;
+  letter-spacing: -1px;
+}
+
+.header h1:last-child {
+  font-size: 25px;
+  color: #f8fafc;
+}
+
+/* ===== Dashboard Cards ===== */
 .hero {
-  gap: 30px;
-  width: 100%;
-  border: 1px solid black;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-bottom: 35px;
 }
 
 .card {
-  border: 3px dotted black;
-  border-radius: 8px;
-  background-color: rgb(195, 244, 228);
-  padding: 10px;
+  background: linear-gradient(145deg, #172338, #111a2c);
+  border: 1px solid #29374d;
+  border-radius: 18px;
+  padding: 27px 24px;
+  min-height: 125px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
 }
 
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #38bdf8;
+}
+
+.card h3 {
+  color: #94a3b8;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 2;
+}
+
+.card h3 br {
+  display: block;
+  content: "";
+  margin-bottom: 5px;
+}
+
+.card h3 {
+  color: #cbd5e1;
+}
+
+.card h3::first-line {
+  color: #94a3b8;
+}
+
+/* ===== Add Transaction Form ===== */
+form {
+  background: #111a2c;
+  border: 1px solid #29374d;
+  border-radius: 18px;
+  padding: 30px;
+  margin-bottom: 35px;
+}
+
+form h1 {
+  font-size: 23px;
+  margin-bottom: 25px;
+  color: #f8fafc;
+}
+
+form h3 {
+  font-size: 14px;
+  color: #cbd5e1;
+  font-weight: 500;
+  margin: 17px 0 9px;
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  background: #0b1120;
+  color: #f8fafc;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+form input:focus,
+form select:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12);
+}
+
+form input::placeholder {
+  color: #64748b;
+}
+
+form select {
+  cursor: pointer;
+}
+
+form br {
+  display: none;
+}
+
+/* ===== Buttons ===== */
+form button {
+  margin-top: 25px;
+  padding: 13px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #0284c7;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+form button:hover {
+  background: #0369a1;
+  transform: translateY(-2px);
+}
+
+form button:active {
+  transform: scale(0.98);
+}
+
+/* ===== Transaction List ===== */
 .detail {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.detail > h2 {
+  text-align: center;
+  color: #94a3b8;
+  background: #111a2c;
+  border: 1px dashed #334155;
+  border-radius: 15px;
+  padding: 35px 20px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Each transaction */
+.detail > div {
+  background: #111a2c;
+  border: 1px solid #29374d;
+  border-radius: 14px;
+  padding: 20px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.detail > div:hover {
+  border-color: #475569;
+  transform: translateY(-2px);
+}
+
+.detail > div h3 {
+  font-size: 15px;
+  font-weight: 500;
+  color: #cbd5e1;
+  overflow-wrap: anywhere;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 700px) {
+  .container {
+    width: 94%;
+    padding-top: 25px;
+  }
+
+  .header {
+    margin-bottom: 25px;
+  }
+
+  .header h1:first-child {
+    font-size: 25px;
+  }
+
+  .header h1:last-child {
+    font-size: 20px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-bottom: 25px;
+  }
+
+  .card {
+    min-height: auto;
+    padding: 20px;
+  }
+
+  form {
+    padding: 22px 18px;
+  }
+
+  form h1 {
+    font-size: 21px;
+  }
+
+  .detail > div {
+    padding: 17px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
 }
