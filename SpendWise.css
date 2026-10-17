@@ -1,15 +1,29 @@
-/* ===== Global Styles ===== */
+/* ===== RESET & GLOBAL STYLES ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+:root {
+  --bg: #0b1020;
+  --surface: #131b2e;
+  --surface-light: #1a2540;
+  --border: #293650;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --blue: #38bdf8;
+  --green: #34d399;
+  --red: #fb7185;
+}
+
 body {
   font-family: "Segoe UI", Arial, sans-serif;
-  background: #0b1120;
-  color: #f1f5f9;
+  background:
+    radial-gradient(ellipse at top left, #17294b 0%, transparent 42%), var(--bg);
+  color: var(--text);
   min-height: 100vh;
+  line-height: 1.6;
 }
 
 button,
@@ -18,33 +32,38 @@ select {
   font: inherit;
 }
 
+button {
+  cursor: pointer;
+}
+
 .container {
   width: min(1100px, 92%);
   margin: 0 auto;
-  padding: 35px 0 50px;
+  padding: 36px 0 60px;
 }
 
-/* ===== Header ===== */
+/* ===== HEADER ===== */
 .header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  align-items: center;
+  gap: 16px;
   margin-bottom: 35px;
 }
 
 .header h1:first-child {
-  font-size: 30px;
-  color: #38bdf8;
+  color: var(--blue);
+  font-size: 32px;
+  font-weight: 800;
   letter-spacing: -1px;
 }
 
 .header h1:last-child {
-  font-size: 25px;
-  color: #f8fafc;
+  font-size: 24px;
+  font-weight: 600;
 }
 
-/* ===== Dashboard Cards ===== */
+/* ===== DASHBOARD CARDS ===== */
 .hero {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -53,74 +72,91 @@ select {
 }
 
 .card {
-  background: linear-gradient(145deg, #172338, #111a2c);
-  border: 1px solid #29374d;
-  border-radius: 18px;
-  padding: 27px 24px;
-  min-height: 125px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+  min-height: 145px;
+  padding: 25px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: linear-gradient(145deg, var(--surface-light), var(--surface));
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
   transition:
     transform 0.2s ease,
     border-color 0.2s ease;
 }
 
+.card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--blue);
+  opacity: 0.85;
+}
+
+.card:nth-child(2)::after {
+  background: var(--green);
+}
+
+.card:nth-child(3)::after {
+  background: var(--red);
+}
+
 .card:hover {
-  transform: translateY(-4px);
-  border-color: #38bdf8;
+  transform: translateY(-5px);
+  border-color: #475b7d;
 }
 
 .card h3 {
-  color: #94a3b8;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--muted);
   font-size: 15px;
   font-weight: 500;
-  line-height: 2;
+  line-height: 1.5;
 }
 
 .card h3 br {
-  display: block;
-  content: "";
-  margin-bottom: 5px;
+  display: none;
 }
 
-.card h3 {
-  color: #cbd5e1;
-}
-
-.card h3::first-line {
-  color: #94a3b8;
-}
-
-/* ===== Add Transaction Form ===== */
+/* ===== ADD TRANSACTION FORM ===== */
 form {
-  background: #111a2c;
-  border: 1px solid #29374d;
-  border-radius: 18px;
   padding: 30px;
   margin-bottom: 35px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: rgba(19, 27, 46, 0.94);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
 }
 
 form h1 {
-  font-size: 23px;
-  margin-bottom: 25px;
-  color: #f8fafc;
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 700;
 }
 
 form h3 {
-  font-size: 14px;
+  margin: 17px 0 8px;
   color: #cbd5e1;
-  font-weight: 500;
-  margin: 17px 0 9px;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 form input,
 form select {
+  display: block;
   width: 100%;
-  padding: 13px 15px;
-  border: 1px solid #334155;
-  border-radius: 10px;
-  background: #0b1120;
-  color: #f8fafc;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1px solid #34425d;
+  border-radius: 11px;
   outline: none;
+  background: #0b1222;
+  color: var(--text);
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease;
@@ -128,8 +164,8 @@ form select {
 
 form input:focus,
 form select:focus {
-  border-color: #38bdf8;
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12);
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.13);
 }
 
 form input::placeholder {
@@ -144,23 +180,27 @@ form br {
   display: none;
 }
 
-/* ===== Buttons ===== */
+/* ===== ADD BUTTON ===== */
 form button {
-  margin-top: 25px;
-  padding: 13px 20px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 47px;
+  padding: 12px 22px;
+  margin-top: 24px;
   border: none;
-  border-radius: 10px;
-  background: #0284c7;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
   color: white;
-  font-weight: 600;
-  cursor: pointer;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.2);
   transition:
-    background 0.2s ease,
-    transform 0.2s ease;
+    transform 0.2s ease,
+    filter 0.2s ease;
 }
 
 form button:hover {
-  background: #0369a1;
+  filter: brightness(1.12);
   transform: translateY(-2px);
 }
 
@@ -168,7 +208,7 @@ form button:active {
   transform: scale(0.98);
 }
 
-/* ===== Transaction List ===== */
+/* ===== TRANSACTION LIST ===== */
 .detail {
   display: flex;
   flex-direction: column;
@@ -176,46 +216,64 @@ form button:active {
 }
 
 .detail > h2 {
+  padding: 32px 20px;
+  border: 1px dashed #34425d;
+  border-radius: 16px;
+  background: var(--surface);
+  color: var(--muted);
   text-align: center;
-  color: #94a3b8;
-  background: #111a2c;
-  border: 1px dashed #334155;
-  border-radius: 15px;
-  padding: 35px 20px;
   font-size: 18px;
   font-weight: 500;
 }
 
-/* Each transaction */
 .detail > div {
-  background: #111a2c;
-  border: 1px solid #29374d;
-  border-radius: 14px;
-  padding: 20px 22px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 15px;
+  padding: 20px 22px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: linear-gradient(145deg, #151f34, #111827);
   transition:
     border-color 0.2s ease,
     transform 0.2s ease;
 }
 
 .detail > div:hover {
-  border-color: #475569;
+  border-color: #475b7d;
   transform: translateY(-2px);
 }
 
 .detail > div h3 {
+  color: #cbd5e1;
   font-size: 15px;
   font-weight: 500;
-  color: #cbd5e1;
   overflow-wrap: anywhere;
 }
 
-/* ===== Responsive Design ===== */
-@media (max-width: 700px) {
+/* ===== DELETE BUTTON ===== */
+.detail button {
+  padding: 8px 15px;
+  border: 1px solid rgba(251, 113, 133, 0.35);
+  border-radius: 9px;
+  background: rgba(251, 113, 133, 0.1);
+  color: #fda4af;
+  font-size: 13px;
+  font-weight: 700;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.detail button:hover {
+  background: #e11d48;
+  color: white;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 760px) {
   .container {
     width: 94%;
     padding-top: 25px;
@@ -226,7 +284,7 @@ form button:active {
   }
 
   .header h1:first-child {
-    font-size: 25px;
+    font-size: 26px;
   }
 
   .header h1:last-child {
@@ -235,17 +293,17 @@ form button:active {
 
   .hero {
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 15px;
     margin-bottom: 25px;
   }
 
   .card {
     min-height: auto;
-    padding: 20px;
+    padding: 22px;
   }
 
   form {
-    padding: 22px 18px;
+    padding: 23px 18px;
   }
 
   form h1 {
@@ -253,10 +311,22 @@ form button:active {
   }
 
   .detail > div {
-    padding: 17px;
     align-items: flex-start;
     flex-direction: column;
+    padding: 18px;
   }
+
+  .detail button {
+    align-self: flex-start;
+  }
+}
+
+/* ===== ACCESSIBILITY ===== */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {
