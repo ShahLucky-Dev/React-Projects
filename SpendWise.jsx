@@ -9,6 +9,10 @@ function App() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (amount === "" || !title.trim() === "" || type === "") {
+      alert("fill fields");
+      return;
+    }
     const transaction = {
       id: Date.now(),
       title: title,
